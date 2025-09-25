@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150">
+  <!-- Sin fondo, es transparente -->
+  
+  <!-- Barra vertical izquierda -->
+  <rect x="20" y="20" width="20" height="110" fill="#000"></rect>
+  <!-- Barra horizontal izquierda -->
+  <rect x="20" y="65" width="100" height="20" fill="#000"></rect>
+  
+  <!-- Barra vertical derecha -->
+  <rect x="260" y="20" width="20" height="110" fill="#000"></rect>
+  <!-- Barra horizontal roja -->
+  <rect x="160" y="65" width="100" height="20" fill="#e30613"></rect>
+</svg>
