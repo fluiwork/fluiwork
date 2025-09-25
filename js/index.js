@@ -1,299 +1,638 @@
-// Toggle del menú móvil
-    const menuToggle = document.getElementById('menuToggle');
-    const navContainer = document.getElementById('navContainer');
-    const menuOverlay = document.getElementById('menuOverlay');
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary SEO -->
+  <title>Fluiwork Agencia — Desarrollo Web & Automatización Inteligente | Automatización, creación de páginas web</title>
+  <meta name="description" content="Fluiwork Agencia: Desarrollo web profesional, automatización inteligente y soluciones a medida. Creamos páginas web, integraciones y sistemas que ahorran tiempo y escalan tu negocio." />
+  <meta name="keywords" content="automatización, desarrollo web, creación de páginas web, contratar desarrolladores web, Fluiwork, chatbots, integración, optimización web" />
+  <meta name="author" content="Fluiwork Agencia" />
+  <link rel="canonical" href="https://fluiwork.pages.dev" />
 
-    menuToggle?.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      navContainer.classList.toggle('active');
-      menuOverlay.classList.toggle('active');
-      menuOverlay.style.display = navContainer.classList.contains('active') ? 'block' : 'none';
-      document.body.classList.toggle('no-scroll', navContainer.classList.contains('active'));
-    });
+  <!-- Social / Open Graph -->
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Fluiwork Agencia — Desarrollo Web & Automatización Inteligente" />
+  <meta property="og:description" content="Desarrollo web profesional, automatización de procesos, chatbots y soluciones a medida. Ahorra tiempo y escala tu negocio con Fluiwork." />
+  <meta property="og:url" content="https://fluiwork.pages.dev" />
+  <meta property="og:site_name" content="Fluiwork Agencia" />
+  <meta property="og:image" content="https://fluiwork.pages.devimg/og-image.jpg" />
+  <meta property="og:image:alt" content="Fluiwork Agencia - Desarrollo Web y Automatización Inteligente" />
 
-    menuOverlay?.addEventListener('click', () => {
-      menuToggle.classList.remove('active');
-      navContainer.classList.remove('active');
-      menuOverlay.classList.remove('active');
-      menuOverlay.style.display = 'none';
-      document.body.classList.remove('no-scroll');
-    });
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Fluiwork" />
+  <meta name="twitter:title" content="Fluiwork Agencia — Desarrollo Web & Automatización Inteligente" />
+  <meta name="twitter:description" content="Creamos páginas web y sistemas automatizados que liberan tu tiempo y aumentan productividad." />
+  <meta name="twitter:image" content="https://fluiwork.pages.devimg/og-image.jpg" />
 
-    // Cerrar menú al hacer clic en un enlace
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          menuToggle.classList.remove('active');
-          navContainer.classList.remove('active');
-          menuOverlay.classList.remove('active');
-          menuOverlay.style.display = 'none';
-          document.body.classList.remove('no-scroll');
+  <!-- Performance / Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+
+  <!-- Structured data (JSON-LD): WebSite, Organization, LocalBusiness, Services, Breadcrumbs and FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://fluiwork.pages.dev#organization",
+        "name": "Fluiwork Agencia",
+        "url": "https://fluiwork.pages.dev",
+        "logo": "https://fluiwork.pages.devimg/logo.png",
+        "sameAs": [
+               "https://www.linkedin.com/in/fluiwork-agencia-654764375",
+                "https://www.instagram.com/fluiwork_agencia",
+                "https://www.tiktok.com/@fluiwork.aencia"
+        ],
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+57-301-6084-113",
+          "contactType": "sales",
+          "areaServed": "CO"
+        }]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://fluiwork.pages.dev#website",
+        "url": "https://fluiwork.pages.dev",
+        "name": "Fluiwork Agencia",
+        "publisher": { "@id": "https://fluiwork.pages.dev#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://fluiwork.pages.dev?s={search_term_string}",
+          "query-input": "required name=search_term_string"
         }
-      });
-    });
-
-    // Smooth scrolling mejorado
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          const headerOffset = 80;
-          const elementPosition = target.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-          
-          // Actualizar clase activa
-          document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-          });
-          this.classList.add('active');
-        }
-      });
-    });
-
-    // Intersection Observer para animaciones
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    // Observar elementos para animaciones
-    document.querySelectorAll('section, .card, .service-item, .process-step').forEach(element => {
-      element.classList.add('fade-in');
-      observer.observe(element);
-    });
-
-    // Highlight de navegación activa
-    window.addEventListener('scroll', () => {
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('.nav-link');
-      
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-          current = section.getAttribute('id');
-        }
-      });
-      
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.add('active');
-        }
-      });
-    });
-
-    // Inicializar efectos cuando la página carga
-    window.addEventListener('load', () => {
-      // Añadir clase para animaciones iniciales
-      document.body.classList.add('loaded');
-    });
-
-    // Cambiar el título de la página cuando el usuario cambia de pestaña
-    let originalTitle = document.title;
-    document.addEventListener('visibilitychange', function() {
-      if (document.visibilityState === 'hidden') {
-        document.title = '¡Vuelve! Tu automatización te espera';
-      } else {
-        document.title = originalTitle;
-      }
-    });
-
-    // Esperar a que el DOM esté completamente cargado
-    document.addEventListener('DOMContentLoaded', function() {
-      // Obtener elementos del DOM
-      const modal = document.getElementById('contactModal');
-      const closeBtn = document.querySelector('#contactModal .close');
-      const form = document.getElementById('contactForm');
-
-      // Buscar el botón de consultoría (si existe)
-      const btnConsultoria = document.querySelector('#contacto .btn-primary');
-
-      // Si falta algún elemento crítico lo reportamos, pero NO hacemos return (evita detener todo)
-      if (!modal) console.warn('Modal #contactModal no encontrado');
-      if (!closeBtn) console.warn('Botón close dentro de #contactModal no encontrado');
-      if (!form) {
-        console.error('Formulario #contactForm no encontrado — los envíos no funcionarán');
-        return; // aquí sí detenemos porque sin form no hay submit
-      }
-
-      // Adjuntar evento para abrir modal sólo si el botón existe
-      if (btnConsultoria) {
-        btnConsultoria.addEventListener('click', function(e) {
-          e.preventDefault();
-          if (modal) {
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-          }
-        });
-      } else {
-        console.info('No se encontró #contacto .btn-primary — abre el modal manualmente para probar.');
-      }
-
-      // Cerrar modal con la X (si existe)
-      if (closeBtn) {
-        closeBtn.addEventListener('click', function() {
-          if (modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-          }
-        });
-      }
-
-      // Cerrar modal al hacer clic fuera de él
-      window.addEventListener('click', function(e) {
-        if (modal && e.target === modal) {
-          modal.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }
-      });
-
-      // Función para sanear y formatear teléfono
-      function formatearTelefono(raw) {
-        if (!raw) return '';
-        let dígitos = String(raw).replace(/\D+/g, '');
-        dígitos = dígitos.replace(/^0+/, '');
-        if (!dígitos.startsWith('57')) {
-          dígitos = '57' + dígitos;
-        }
-        return dígitos;
-      }
-
-      // Manejar envío del formulario
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Tomar valores DIRECTAMENTE por id
-        const nombreElem = document.getElementById('nombre');
-        const correoElem = document.getElementById('correo');
-        const telefonoElem = document.getElementById('telefono');
-        const terminosElem = document.getElementById('terminos');
-
-        const nombre = nombreElem ? nombreElem.value.trim() : '';
-        const correo = correoElem ? correoElem.value.trim() : '';
-        const telefono = telefonoElem ? formatearTelefono(telefonoElem.value.trim()) : '';
-        const terminos = terminosElem ? (terminosElem.checked ? 'Sí' : 'No') : 'No encontrado';
-
-        const objeto = {
-          nombre,
-          correo,
-          telefono,
-          terminos,
-          origen: 'Formulario Modal - Fluiwork Agencia',
-          enviadoEn: new Date().toISOString()
-        };
-
-        // Mostrar payload en consola para verificar que los datos se capturan correctamente
-        console.log('Payload que se va a enviar:', objeto);
-
-        // Deshabilitar botón durante el envío
-        const submitBtn = form.querySelector('.btn-submit') || form.querySelector('button[type="submit"]');
-        const originalText = submitBtn ? submitBtn.textContent : 'Enviar';
-        if (submitBtn) {
-          submitBtn.textContent = 'Enviando...';
-          submitBtn.disabled = true;
-        }
-
-        /* ---------------------------
-           OPCIÓN A: ENVÍO DIRECTO A TELEGRAM (ACTIVO)
-           --------------------------- */
-
-        // REEMPLAZA estos valores sólo para pruebas locales:
-        const TELEGRAM_BOT_TOKEN = '8231769372:AAGhuEPGtMHB6EXBMeGLbcBqxrRGSdEvADc';   // <-- reemplaza con tu token solo en pruebas
-        const TELEGRAM_CHAT_ID  = '-1003126498742';     // <-- reemplaza con tu chat id
-
-        // Construir mensaje legible con los campos
-        const mensaje = `Nuevo formulario recibido:\nNombre: ${objeto.nombre}\nCorreo: ${objeto.correo}\nTeléfono: ${objeto.telefono}\nAceptó términos: ${objeto.terminos}\nOrigen: ${objeto.origen}`;
-
-        console.log('Mensaje a Telegram:', mensaje);
-
-        fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: TELEGRAM_CHAT_ID,
-            text: mensaje
-            // parse_mode: 'HTML' // opcional
-          })
-        })
-        .then(async res => {
-          if (!res.ok) {
-            let txt = '';
-            try { txt = await res.text(); } catch (e) { txt = 'no response text'; }
-            throw new Error(`HTTP ${res.status}: ${txt}`);
-          }
-          return res.json();
-        })
-        .then(data => {
-          if (data && data.ok) {
-            alert('¡Solicitud enviada correctamente! 🎉\nNos pondremos en contacto contigo pronto.');
-            form.reset();
-            if (modal) {
-              modal.style.display = 'none';
-              document.body.style.overflow = 'auto';
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://fluiwork.pages.dev#localbusiness",
+        "name": "Fluiwork Agencia",
+        "image": "https://fluiwork.pages.devimg/office.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Dirección ejemplo 123",
+          "addressLocality": "Ciudad",
+          "addressRegion": "Departamento",
+          "postalCode": "000000",
+          "addressCountry": "CO"
+        },
+        "telephone": "+57-301-6084-113",
+        "url": "https://fluiwork.pages.dev",
+        "priceRange": "350.000 - $5.000.000",
+        "description": "Agencia especializada en desarrollo web y automatización inteligente."
+      },
+      {
+        "@type": "ItemList",
+        "itemListOrder": "http://schema.org/ItemListOrderAscending",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@id": "https://fluiwork.pages.dev#service-devweb",
+              "name": "Desarrollo Web Profesional"
             }
-          } else {
-            throw new Error('Telegram devolvió error: ' + JSON.stringify(data));
-          }
-        })
-        .catch(error => {
-          console.error('Error enviando a Telegram:', error);
-          alert('Ocurrió un error enviando el formulario. Revisa la consola para más detalles.');
-
-          // BLOQUE COMENTADO: envío al webhook (n8n) — lo dejamos comentado como pediste.
-          /*
-          fetch('https://pruebadeenvios.app.n8n.cloud/webhook-test/4400e876-1d50-4f84-8acf-3c2e57a6366f', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(objeto)
-          })
-          .then(respuesta => {
-            if (!respuesta.ok) throw new Error("Error al enviar datos al webhook");
-            return respuesta.text();
-          })
-          .then(data => {
-            alert('¡Solicitud enviada correctamente via webhook! 🎉');
-            form.reset();
-            if (modal) {
-              modal.style.display = 'none';
-              document.body.style.overflow = 'auto';
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@id": "https://fluiwork.pages.dev#service-automatizacion",
+              "name": "Integración Web con Automatización"
             }
-          })
-          .catch(err => {
-            console.error('Error enviando al webhook comentado:', err);
-            alert('También falló el webhook. Por favor intenta más tarde.');
-          });
-          */
-        })
-        .finally(() => {
-          // Restaurar botón
-          if (submitBtn) {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
           }
-        });
-      });
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://fluiwork.pages.dev#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Cuánto tarda un proyecto web con Fluiwork?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depende del alcance: un sitio básico puede tardar 1-2 semanas, proyectos con integraciones y automatizaciones 4-12 semanas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Ofrecen soporte después del lanzamiento?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí, ofrecemos planes de soporte 24/7, mantenimiento y evolución de sistemas."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
-      // Cerrar modal con tecla Escape 
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.style.display === 'block') {
-          modal.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }
-      });
-    });
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo" itemscope itemtype="https://schema.org/Organization">
+        <img src="img/photo_2025-07-17_15-55-06.jpg" alt="Logo Fluiwork Agencia - Desarrollo Web y Automatización" width="120" height="36" loading="lazy" />
+        <div>
+          <div class="logo-text" itemprop="name">Fluiwork</div>
+          <div class="tagline" style="font-size: 10px;">Desarrollo Web & Automatización Inteligente</div>
+        </div>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-controls="navContainer" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-container" id="navContainer" role="navigation" aria-label="Menú principal">
+        <a href="#inicio" class="nav-link active">Inicio — Desarrollo web y automatización</a>
+        <a href="#servicios" class="nav-link">Servicios — Desarrollo web</a>
+        <a href="#beneficios" class="nav-link">Beneficios — Automatización</a>
+        <a href="#proceso" class="nav-link">Proceso — Metodología</a>
+        <a href="#nosotros" class="nav-link">Nosotros — Equipo Fluiwork</a>
+        <a href="#contacto" class="nav-link">Contacto — Solicitar consultoría</a>
+      </nav>
+
+      <div class="menu-overlay" id="menuOverlay"></div>
+    </div>
+  </header>
+
+  <section id="inicio" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/>
+          </svg>
+          Soluciones Web & Automatización
+        </div>
+        
+        <h1 class="hero-title">Desarrollo Web Profesional y Automatización Inteligente</h1>
+        
+       <p class="hero-subtitle">
+          Creamos páginas web profesionales y transformamos procesos repetitivos en sistemas inteligentes que impulsan tu negocio.
+        </p>
+        
+        <div class="hero-buttons">
+          <a href="#contacto" class="btn btn-primary">
+            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            Comenzar ahora
+          </a>
+          <a href="#servicios" class="btn btn-outline">
+            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            Ver servicios
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="introduccion">
+    <div class="container-narrow">
+      <div class="mission-vision">
+        <div class="card">
+          <div class="card-icon">
+            <svg class="icon" fill="white" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Misión</h3>
+          <p class="card-description">Desarrollar soluciones web profesionales y sistemas de automatización inteligente que potencien la productividad y competitividad de nuestros clientes.</p>
+        </div>
+        
+        <!-- Visión actualizada -->
+        <div class="card">
+          <div class="card-icon">
+            <svg class="icon" fill="white" viewBox="0 0 24 24">
+              <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Visión</h3>
+          <p class="card-description">Ser el referente en desarrollo web y automatización inteligente, transformando empresas en líderes digitales con soluciones tecnológicas innovadoras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Desarrollo Web & Automatización</h2>
+        <p class="section-subtitle">Soluciones tecnológicas avanzadas para tu presencia digital y eficiencia operativa</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Desarrollo Web Profesional</h3>
+          </div>
+          <p class="service-description">Sitios web personalizados con HTML, CSS, JavaScript, PHP y MySQL. Diseños responsivos, optimizados para SEO y de alto rendimiento que reflejan tu identidad de marca.</p>
+        </div>
+        
+        <!-- Servicio existente actualizado -->
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Integración Web con Automatización</h3>
+          </div>
+          <p class="service-description">Sitios web optimizados con integración de automatizaciones avanzadas: chatbots inteligentes, formularios adaptativos y flujos de trabajo automatizados.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Gestión Inteligente de Citas</h3>
+          </div>
+          <p class="service-description">Sistema automatizado para agendar, reprogramar y cancelar citas con sincronización en tiempo real. Notificaciones multicanal por email, SMS y WhatsApp con recordatorios personalizados y confirmaciones automáticas.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Llamadas Automatizadas</h3>
+          </div>
+          <p class="service-description">Sistemas IVR avanzados y marcación automática inteligente para encuestas, recordatorios de pago y seguimiento postventa. Incluye reconocimiento de voz, transcripción automática y análisis de sentimientos.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Gestión de Facturas y Cobros</h3>
+          </div>
+          <p class="service-description">Automatización completa del ciclo de facturación: emisión, envío y seguimiento de facturas electrónicas. Integración con múltiples pasarelas de pago y sistema inteligente de recordatorios de vencimiento.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Asistente Virtual Empresarial</h3>
+          </div>
+          <p class="service-description">Gestión automatizada de tareas organizacionales: calendarios inteligentes, recordatorios contextuales, coordinación de reuniones. Búsqueda de información, generación de reportes y comunicaciones empresariales.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Desarrollo Web Optimizado</h3>
+          </div>
+          <p class="service-description">Adaptación y optimización de sitios web para integrar automatizaciones avanzadas: chatbots inteligentes, formularios adaptativos, flujos de trabajo automatizados. Desarrollo de aplicaciones web personalizadas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="beneficios">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Beneficios Transformadores</h2>
+        <p class="section-subtitle">Resultados medibles que revolucionan tu operación empresarial</p>
+      </div>
+      
+      <div class="benefits-container">
+        <table class="benefits-table">
+          <thead>
+            <tr>
+              <th>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="white" viewBox="0 0 24 24">
+                    <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-5H19V4h-2v2H7V4H5v2H3.5C2.67 6 2 6.67 2 7.5v11C2 19.33 2.67 20 3.5 20h15c.83 0 1.5-.67 1.5-1.5v-11C20 6.67 19.33 6 18.5 6z"/>
+                  </svg>
+                  Beneficio Clave
+                </div>
+              </th>
+              <th>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  Impacto Empresarial
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zM12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                  </svg>
+                  Optimización de Tiempo
+                </div>
+              </td>
+              <td>Reducción del 70% en tareas manuales repetitivas, liberando tiempo para actividades estratégicas de alto valor añadido.</td>
+            </tr>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                  </svg>
+                  Reducción de Costos
+                </div>
+              </td>
+              <td>Ahorro del 60% en costos operativos mediante la minimización de errores humanos y optimización de procesos automatizados.</td>
+            </tr>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                  Experiencia de Usuario Superior
+                </div>
+              </td>
+              <td>Atención 24/7 con respuestas instantáneas, incrementando la satisfacción del cliente en un 85% y la retención en un 40%.</td>
+            </tr>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+                  </svg>
+                  Escalabilidad Inteligente
+                </div>
+              </td>
+              <td>Sistemas que crecen automáticamente con tu negocio, adaptándose a volúmenes crecientes sin incremento proporcional de recursos.</td>
+            </tr>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                  </svg>
+                  Inteligencia de Datos
+                </div>
+              </td>
+              <td>Analytics avanzado con reportes automáticos y dashboards en tiempo real para decisiones basadas en datos y KPIs precisos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Metodología de Implementación</h2>
+        <p class="section-subtitle">Proceso estructurado y probado para garantizar el éxito de tu transformación digital</p>
+      </div>
+      
+      <div class="process-container">
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">1</div>
+              <h3 class="step-title">Análisis y Diagnóstico</h3>
+            </div>
+            <p class="step-description">Evaluación integral de procesos actuales, identificación de oportunidades de automatización y definición de objetivos específicos con métricas de éxito.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">2</div>
+              <h3 class="step-title">Diseño de Solución</h3>
+            </div>
+            <p class="step-description">Arquitectura de sistemas personalizada, diseño de flujos de interacción, selección de tecnologías óptimas y prototipado de interfaces.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">3</div>
+              <h3 class="step-title">Desarrollo e Integración</h3>
+            </div>
+            <p class="step-description">Implementación técnica de chatbots, sistemas de llamadas, automatización de procesos y desarrollo de aplicaciones web con integración seamless.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">4</div>
+              <h3 class="step-title">Testing y Optimización</h3>
+            </div>
+            <p class="step-description">Pruebas exhaustivas en entornos controlados, simulación de escenarios reales, recopilación de feedback y optimización iterativa del rendimiento.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">5</div>
+              <h3 class="step-title">Despliegue y Capacitación</h3>
+            </div>
+            <p class="step-description">Implementación en producción con migración controlada, capacitación especializada del equipo y documentación técnica completa.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">6</div>
+              <h3 class="step-title">Soporte y Evolución</h3>
+            </div>
+            <p class="step-description">Monitoreo continuo, mantenimiento proactivo, análisis de rendimiento y actualización de sistemas según evolución del negocio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section id="faq" class="container-narrow">
+    <h2>Preguntas frecuentes — Fluiwork</h2>
+    <div class="faq-item">
+      <h3>¿Qué tipo de automatizaciones implementan?</h3>
+      <p>Chatbots, integraciones CRM, automatización de facturación, notificaciones multicanal (email, SMS, WhatsApp) y flujos de trabajo con herramientas como n8n, Zapier o integraciones personalizadas.</p>
+    </div>
+    <div class="faq-item">
+      <h3>¿Puedo contratar solo desarrollo web o también integración con sistemas existentes?</h3>
+      <p>Ofrecemos ambos: desde sitios informativos hasta integraciones completas con ERPs, CRMs y plataformas de pago.</p>
+    </div>
+  </section>
+
+   <section id="nosotros">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">¿Por qué Fluiwork?</h2>
+        <p class="section-subtitle">Experiencia en desarrollo web y automatización que nos distingue</p>
+      </div>
+      
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Experiencia Multisectorial:</strong> Más de 50 proyectos exitosos en servicios, comercio, salud, educación, finanzas y tecnología, adaptando soluciones a cada industria.</p>
+        </div>
+
+          <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Experiencia en Desarrollo Web:</strong> Creamos sitios web profesionales con HTML, CSS, JavaScript, PHP y MySQL para una presencia digital impactante.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Tecnología de Vanguardia:</strong> Utilizamos inteligencia artificial, machine learning y plataformas cloud líderes para garantizar soluciones escalables y futuro-proof.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Enfoque Consultivo:</strong> Equipo multidisciplinario dedicado que comprende profundamente tu industria, desafíos y objetivos estratégicos.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Agilidad y Adaptabilidad:</strong> Metodología ágil que permite iteraciones rápidas y adaptación continua a cambios del mercado y necesidades emergentes.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>ROI Garantizado:</strong> Compromiso con resultados medibles y retorno de inversión demostrable en los primeros 90 días de implementación.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Soporte 24/7:</strong> Monitoreo continuo y soporte técnico especializado para garantizar operación óptima y máxima disponibilidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">¿Listo para Transformar tu Negocio?</h2>
+        <p class="cta-subtitle">Únete a las empresas que ya están liderando la revolución de la automatización inteligente</p>
+        <div class="hero-buttons">
+          <a href="" class="btn btn-primary">
+            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Solicitar Consultoría Gratuita
+          </a>
+          <a href="#servicios" class="btn btn-outline" style="color: white; border-color: white;">
+            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+            Ver Casos de Éxito
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-text">
+          &copy; 2025 Fluiwork Agencia. Todos los derechos reservados.
+        </div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Política de Privacidad</a>
+          <a href="#" class="footer-link">Términos de Servicio</a>
+          <a href="#" class="footer-link">Contacto</a>
+        </div>
+      </div>
+      <!-- Social icons only -->
+      <div class="social-links" aria-label="Redes sociales Fluiwork" style="display:flex;gap:18px;align-items:center; margin-top: 2%; display: flex; justify-content: center;">
+        <a href="https://www.linkedin.com/in/fluiwork-agencia-654764375" target="_blank" aria-label="LinkedIn" class="social-link">
+          <!-- LinkedIn SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" class="social-icon" role="img" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.352V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.37-1.852 3.605 0 4.266 2.372 4.266 5.455v6.288zM5.337 7.433c-1.144 0-2.068-.926-2.068-2.067 0-1.143.924-2.068 2.068-2.068 1.141 0 2.067.925 2.067 2.068 0 1.141-.926 2.067-2.067 2.067zM6.856 20.452H3.815V9h3.041v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+          </svg>
+        </a>
+
+        <a href="https://www.instagram.com/fluiwork_agencia" target="_blank" aria-label="Instagram" class="social-link">
+          <!-- Instagram SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" class="social-icon" role="img" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.347 3.608 1.322.975.975 1.26 2.242 1.322 3.608.058 1.266.07 1.646.07 4.837s-.012 3.571-.07 4.837c-.062 1.366-.347 2.633-1.322 3.608-.975.975-2.242 1.26-3.608 1.322-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.347-3.608-1.322-.975-.975-1.26-2.242-1.322-3.608C2.175 15.571 2.163 15.191 2.163 12s.012-3.571.07-4.837c.062-1.366.347-2.633 1.322-3.608.975-.975 2.242-1.26 3.608-1.322C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.741 0 8.332.014 7.052.072 5.775.13 4.638.428 3.678 1.388 2.718 2.348 2.42 3.485 2.362 4.762 2.304 6.042 2.29 6.451 2.29 12c0 5.549.014 5.958.072 7.238.058 1.277.356 2.414 1.316 3.374.96.96 2.097 1.258 3.374 1.316 1.28.058 1.689.072 7.238.072s5.958-.014 7.238-.072c1.277-.058 2.414-.356 3.374-1.316.96-.96 1.258-2.097 1.316-3.374.058-1.28.072-1.689.072-7.238s-.014-5.958-.072-7.238c-.058-1.277-.356-2.414-1.316-3.374C21.662.428 20.525.13 19.248.072 17.968.014 17.559 0 14.3 0H12z"/>
+            <path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zM18.406 4.594a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/>
+          </svg>
+        </a>
+
+        <a href="https://www.tiktok.com/@fluiwork.agencia" target="_blank" aria-label="TikTok" class="social-link">
+          <!-- TikTok SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" class="social-icon" role="img" aria-hidden="true">
+            <path d="M12.001 2.004c.164 2.177 1.232 4.16 2.934 5.475 1.01.783 2.289 1.223 3.594 1.275V12.2c-1.476-.048-2.94-.465-4.186-1.218v5.604c0 2.942-2.376 5.335-5.31 5.414-2.993.08-5.493-2.373-5.493-5.364 0-2.808 2.145-5.115 4.877-5.368v3.07c-.596.162-1.03.691-1.03 1.32 0 .752.613 1.363 1.365 1.363.739 0 1.332-.591 1.365-1.326l.004-11.77h2.88z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="modal-body">
+      <div class="brand-info">
+        <h3>Fluiwork Agencia</h3>
+        <p>Rescatamos tu tiempo, automatizamos tu éxito</p>
+      </div>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" required>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Número de celular</label>
+          <input type="tel" id="telefono" name="telefono" required>
+        </div>
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="terminos" name="terminos" required>
+            <span class="checkmark"></span>
+            Acepto que mis datos sean utilizados para recibir información sobre servicios y promociones de Fluiwork Agencia.
+          </label>
+        </div>
+        <button type="submit" class="btn-submit">Solicitar Consultoría Gratuita</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <script src="js/index.js"></script>
+
+</body>
+</html>
