@@ -1,45 +1,168 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Fluiwork Agencia: Desarrollo web profesional y soluciones de automatización inteligente. Creamos páginas web y automatizamos procesos.">
-  <meta name="keywords" content="desarrollo web, páginas web, html, css, php, mysql, phpmyadmin, javascript, automatización, chatbots">
-  <meta name="author" content="Fluiwork Agencia">
-  
-  <title>Fluiwork Agencia - Rescatamos tu tiempo, automatizamos tu éxito</title>
-  
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary SEO -->
+  <title>Fluiwork Agencia — Desarrollo Web & Automatización Inteligente | Automatización, creación de páginas web</title>
+  <meta name="description" content="Fluiwork Agencia: Desarrollo web profesional, automatización inteligente y soluciones a medida. Creamos páginas web, integraciones y sistemas que ahorran tiempo y escalan tu negocio." />
+  <meta name="keywords" content="automatización, desarrollo web, creación de páginas web, contratar desarrolladores web, Fluiwork, chatbots, integración, optimización web" />
+  <meta name="author" content="Fluiwork Agencia" />
+  <link rel="canonical" href="https://fluiwork.pages.dev" />
+
+  <!-- Social / Open Graph -->
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Fluiwork Agencia — Desarrollo Web & Automatización Inteligente" />
+  <meta property="og:description" content="Desarrollo web profesional, automatización de procesos, chatbots y soluciones a medida. Ahorra tiempo y escala tu negocio con Fluiwork." />
+  <meta property="og:url" content="https://fluiwork.pages.dev" />
+  <meta property="og:site_name" content="Fluiwork Agencia" />
+  <meta property="og:image" content="https://fluiwork.pages.devimg/og-image.jpg" />
+  <meta property="og:image:alt" content="Fluiwork Agencia - Desarrollo Web y Automatización Inteligente" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Fluiwork" />
+  <meta name="twitter:title" content="Fluiwork Agencia — Desarrollo Web & Automatización Inteligente" />
+  <meta name="twitter:description" content="Creamos páginas web y sistemas automatizados que liberan tu tiempo y aumentan productividad." />
+  <meta name="twitter:image" content="https://fluiwork.pages.devimg/og-image.jpg" />
+
+  <!-- Performance / Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+
+  <!-- Structured data (JSON-LD): WebSite, Organization, LocalBusiness, Services, Breadcrumbs and FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://fluiwork.pages.dev#organization",
+        "name": "Fluiwork Agencia",
+        "url": "https://fluiwork.pages.dev",
+        "logo": "https://fluiwork.pages.devimg/logo.png",
+        "sameAs": [
+          "https://www.linkedin.com/company/fluiwork",
+          "https://www.facebook.com/fluiwork",
+          "https://twitter.com/Fluiwork"
+        ],
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+57-300-000-0000",
+          "contactType": "sales",
+          "areaServed": "CO"
+        }]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://fluiwork.pages.dev#website",
+        "url": "https://fluiwork.pages.dev",
+        "name": "Fluiwork Agencia",
+        "publisher": { "@id": "https://fluiwork.pages.dev#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://fluiwork.pages.dev?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://fluiwork.pages.dev#localbusiness",
+        "name": "Fluiwork Agencia",
+        "image": "https://fluiwork.pages.devimg/office.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Dirección ejemplo 123",
+          "addressLocality": "Ciudad",
+          "addressRegion": "Departamento",
+          "postalCode": "000000",
+          "addressCountry": "CO"
+        },
+        "telephone": "+57-300-000-0000",
+        "url": "https://fluiwork.pages.dev",
+        "priceRange": "$$$",
+        "description": "Agencia especializada en desarrollo web y automatización inteligente."
+      },
+      {
+        "@type": "ItemList",
+        "itemListOrder": "http://schema.org/ItemListOrderAscending",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@id": "https://fluiwork.pages.dev#service-devweb",
+              "name": "Desarrollo Web Profesional"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@id": "https://fluiwork.pages.dev#service-automatizacion",
+              "name": "Integración Web con Automatización"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://fluiwork.pages.dev#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Cuánto tarda un proyecto web con Fluiwork?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depende del alcance: un sitio básico puede tardar 1-2 semanas, proyectos con integraciones y automatizaciones 4-12 semanas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Ofrecen soporte después del lanzamiento?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí, ofrecemos planes de soporte 24/7, mantenimiento y evolución de sistemas."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/index.css" />
 </head>
 <body>
   <header>
     <div class="header-content">
-      <div class="logo">
-       <img src="img/photo_2025-07-17_15-55-06.jpg" style="width: 12%;" alt="">
+      <div class="logo" itemscope itemtype="https://schema.org/Organization">
+        <img src="img/photo_2025-07-17_15-55-06.jpg" alt="Logo Fluiwork Agencia - Desarrollo Web y Automatización" width="120" height="36" loading="lazy" />
         <div>
-          <div class="logo-text">Fluiwork</div>
-                  <div class="tagline" style="font-size: 10px;">Desarrollo Web & Automatización Inteligente</div>
-
+          <div class="logo-text" itemprop="name">Fluiwork</div>
+          <div class="tagline" style="font-size: 10px;">Desarrollo Web & Automatización Inteligente</div>
         </div>
       </div>
-      
-      <button class="menu-toggle" id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
+
+      <button class="menu-toggle" id="menuToggle" aria-controls="navContainer" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
-      
-      <nav class="nav-container" id="navContainer">
-        <a href="#inicio" class="nav-link active">Inicio</a>
-        <a href="#servicios" class="nav-link">Servicios</a>
-        <a href="#beneficios" class="nav-link">Beneficios</a>
-        <a href="#proceso" class="nav-link">Proceso</a>
-        <a href="#nosotros" class="nav-link">Nosotros</a>
-        <a href="#contacto" class="nav-link">Contacto</a>
+
+      <nav class="nav-container" id="navContainer" role="navigation" aria-label="Menú principal">
+        <a href="#inicio" class="nav-link active">Inicio — Desarrollo web y automatización</a>
+        <a href="#servicios" class="nav-link">Servicios — Desarrollo web</a>
+        <a href="#beneficios" class="nav-link">Beneficios — Automatización</a>
+        <a href="#proceso" class="nav-link">Proceso — Metodología</a>
+        <a href="#nosotros" class="nav-link">Nosotros — Equipo Fluiwork</a>
+        <a href="#contacto" class="nav-link">Contacto — Solicitar consultoría</a>
       </nav>
-      
+
       <div class="menu-overlay" id="menuOverlay"></div>
     </div>
   </header>
@@ -350,6 +473,18 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+    <section id="faq" class="container-narrow">
+    <h2>Preguntas frecuentes — Fluiwork</h2>
+    <div class="faq-item">
+      <h3>¿Qué tipo de automatizaciones implementan?</h3>
+      <p>Chatbots, integraciones CRM, automatización de facturación, notificaciones multicanal (email, SMS, WhatsApp) y flujos de trabajo con herramientas como n8n, Zapier o integraciones personalizadas.</p>
+    </div>
+    <div class="faq-item">
+      <h3>¿Puedo contratar solo desarrollo web o también integración con sistemas existentes?</h3>
+      <p>Ofrecemos ambos: desde sitios informativos hasta integraciones completas con ERPs, CRMs y plataformas de pago.</p>
     </div>
   </section>
 
