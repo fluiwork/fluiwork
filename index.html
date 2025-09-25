@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fluiwork Agencia: Desarrollo web profesional y soluciones de automatización inteligente. Creamos páginas web y automatizamos procesos.">
+  <meta name="keywords" content="desarrollo web, páginas web, html, css, php, mysql, phpmyadmin, javascript, automatización, chatbots">
+  <meta name="author" content="Fluiwork Agencia">
+  
+  <title>Fluiwork Agencia - Rescatamos tu tiempo, automatizamos tu éxito</title>
+  
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo">
+       <img src="img/photo_2025-07-17_15-55-06.jpg" style="width: 12%;" alt="">
+        <div>
+          <div class="logo-text">Fluiwork</div>
+                  <div class="tagline" style="font-size: 10px;">Desarrollo Web & Automatización Inteligente</div>
+
+        </div>
+      </div>
+      
+      <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="nav-container" id="navContainer">
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#beneficios" class="nav-link">Beneficios</a>
+        <a href="#proceso" class="nav-link">Proceso</a>
+        <a href="#nosotros" class="nav-link">Nosotros</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+      
+      <div class="menu-overlay" id="menuOverlay"></div>
+    </div>
+  </header>
+
+  <section id="inicio" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/>
+          </svg>
+          Soluciones Web & Automatización
+        </div>
+        
+        <h1 class="hero-title">Desarrollo Web Profesional y Automatización Inteligente</h1>
+        
+       <p class="hero-subtitle">
+          Creamos páginas web profesionales y transformamos procesos repetitivos en sistemas inteligentes que impulsan tu negocio.
+        </p>
+        
+        <div class="hero-buttons">
+          <a href="#contacto" class="btn btn-primary">
+            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            Comenzar ahora
+          </a>
+          <a href="#servicios" class="btn btn-outline">
+            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            Ver servicios
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="introduccion">
+    <div class="container-narrow">
+      <div class="mission-vision">
+        <div class="card">
+          <div class="card-icon">
+            <svg class="icon" fill="white" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Misión</h3>
+          <p class="card-description">Desarrollar soluciones web profesionales y sistemas de automatización inteligente que potencien la productividad y competitividad de nuestros clientes.</p>
+        </div>
+        
+        <!-- Visión actualizada -->
+        <div class="card">
+          <div class="card-icon">
+            <svg class="icon" fill="white" viewBox="0 0 24 24">
+              <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Visión</h3>
+          <p class="card-description">Ser el referente en desarrollo web y automatización inteligente, transformando empresas en líderes digitales con soluciones tecnológicas innovadoras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Desarrollo Web & Automatización</h2>
+        <p class="section-subtitle">Soluciones tecnológicas avanzadas para tu presencia digital y eficiencia operativa</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Desarrollo Web Profesional</h3>
+          </div>
+          <p class="service-description">Sitios web personalizados con HTML, CSS, JavaScript, PHP y MySQL. Diseños responsivos, optimizados para SEO y de alto rendimiento que reflejan tu identidad de marca.</p>
+        </div>
+        
+        <!-- Servicio existente actualizado -->
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Integración Web con Automatización</h3>
+          </div>
+          <p class="service-description">Sitios web optimizados con integración de automatizaciones avanzadas: chatbots inteligentes, formularios adaptativos y flujos de trabajo automatizados.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Gestión Inteligente de Citas</h3>
+          </div>
+          <p class="service-description">Sistema automatizado para agendar, reprogramar y cancelar citas con sincronización en tiempo real. Notificaciones multicanal por email, SMS y WhatsApp con recordatorios personalizados y confirmaciones automáticas.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Llamadas Automatizadas</h3>
+          </div>
+          <p class="service-description">Sistemas IVR avanzados y marcación automática inteligente para encuestas, recordatorios de pago y seguimiento postventa. Incluye reconocimiento de voz, transcripción automática y análisis de sentimientos.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Gestión de Facturas y Cobros</h3>
+          </div>
+          <p class="service-description">Automatización completa del ciclo de facturación: emisión, envío y seguimiento de facturas electrónicas. Integración con múltiples pasarelas de pago y sistema inteligente de recordatorios de vencimiento.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Asistente Virtual Empresarial</h3>
+          </div>
+          <p class="service-description">Gestión automatizada de tareas organizacionales: calendarios inteligentes, recordatorios contextuales, coordinación de reuniones. Búsqueda de información, generación de reportes y comunicaciones empresariales.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Desarrollo Web Optimizado</h3>
+          </div>
+          <p class="service-description">Adaptación y optimización de sitios web para integrar automatizaciones avanzadas: chatbots inteligentes, formularios adaptativos, flujos de trabajo automatizados. Desarrollo de aplicaciones web personalizadas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="beneficios">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Beneficios Transformadores</h2>
+        <p class="section-subtitle">Resultados medibles que revolucionan tu operación empresarial</p>
+      </div>
+      
+      <div class="benefits-container">
+        <table class="benefits-table">
+          <thead>
+            <tr>
+              <th>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="white" viewBox="0 0 24 24">
+                    <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-5H19V4h-2v2H7V4H5v2H3.5C2.67 6 2 6.67 2 7.5v11C2 19.33 2.67 20 3.5 20h15c.83 0 1.5-.67 1.5-1.5v-11C20 6.67 19.33 6 18.5 6z"/>
+                  </svg>
+                  Beneficio Clave
+                </div>
+              </th>
+              <th>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  Impacto Empresarial
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zM12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                  </svg>
+                  Optimización de Tiempo
+                </div>
+              </td>
+              <td>Reducción del 70% en tareas manuales repetitivas, liberando tiempo para actividades estratégicas de alto valor añadido.</td>
+            </tr>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                  </svg>
+                  Reducción de Costos
+                </div>
+              </td>
+              <td>Ahorro del 60% en costos operativos mediante la minimización de errores humanos y optimización de procesos automatizados.</td>
+            </tr>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                  Experiencia de Usuario Superior
+                </div>
+              </td>
+              <td>Atención 24/7 con respuestas instantáneas, incrementando la satisfacción del cliente en un 85% y la retención en un 40%.</td>
+            </tr>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+                  </svg>
+                  Escalabilidad Inteligente
+                </div>
+              </td>
+              <td>Sistemas que crecen automáticamente con tu negocio, adaptándose a volúmenes crecientes sin incremento proporcional de recursos.</td>
+            </tr>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                  </svg>
+                  Inteligencia de Datos
+                </div>
+              </td>
+              <td>Analytics avanzado con reportes automáticos y dashboards en tiempo real para decisiones basadas en datos y KPIs precisos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Metodología de Implementación</h2>
+        <p class="section-subtitle">Proceso estructurado y probado para garantizar el éxito de tu transformación digital</p>
+      </div>
+      
+      <div class="process-container">
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">1</div>
+              <h3 class="step-title">Análisis y Diagnóstico</h3>
+            </div>
+            <p class="step-description">Evaluación integral de procesos actuales, identificación de oportunidades de automatización y definición de objetivos específicos con métricas de éxito.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">2</div>
+              <h3 class="step-title">Diseño de Solución</h3>
+            </div>
+            <p class="step-description">Arquitectura de sistemas personalizada, diseño de flujos de interacción, selección de tecnologías óptimas y prototipado de interfaces.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">3</div>
+              <h3 class="step-title">Desarrollo e Integración</h3>
+            </div>
+            <p class="step-description">Implementación técnica de chatbots, sistemas de llamadas, automatización de procesos y desarrollo de aplicaciones web con integración seamless.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">4</div>
+              <h3 class="step-title">Testing y Optimización</h3>
+            </div>
+            <p class="step-description">Pruebas exhaustivas en entornos controlados, simulación de escenarios reales, recopilación de feedback y optimización iterativa del rendimiento.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">5</div>
+              <h3 class="step-title">Despliegue y Capacitación</h3>
+            </div>
+            <p class="step-description">Implementación en producción con migración controlada, capacitación especializada del equipo y documentación técnica completa.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">6</div>
+              <h3 class="step-title">Soporte y Evolución</h3>
+            </div>
+            <p class="step-description">Monitoreo continuo, mantenimiento proactivo, análisis de rendimiento y actualización de sistemas según evolución del negocio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <section id="nosotros">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">¿Por qué Fluiwork?</h2>
+        <p class="section-subtitle">Experiencia en desarrollo web y automatización que nos distingue</p>
+      </div>
+      
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Experiencia Multisectorial:</strong> Más de 50 proyectos exitosos en servicios, comercio, salud, educación, finanzas y tecnología, adaptando soluciones a cada industria.</p>
+        </div>
+
+          <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Experiencia en Desarrollo Web:</strong> Creamos sitios web profesionales con HTML, CSS, JavaScript, PHP y MySQL para una presencia digital impactante.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Tecnología de Vanguardia:</strong> Utilizamos inteligencia artificial, machine learning y plataformas cloud líderes para garantizar soluciones escalables y futuro-proof.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Enfoque Consultivo:</strong> Equipo multidisciplinario dedicado que comprende profundamente tu industria, desafíos y objetivos estratégicos.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Agilidad y Adaptabilidad:</strong> Metodología ágil que permite iteraciones rápidas y adaptación continua a cambios del mercado y necesidades emergentes.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>ROI Garantizado:</strong> Compromiso con resultados medibles y retorno de inversión demostrable en los primeros 90 días de implementación.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Soporte 24/7:</strong> Monitoreo continuo y soporte técnico especializado para garantizar operación óptima y máxima disponibilidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">¿Listo para Transformar tu Negocio?</h2>
+        <p class="cta-subtitle">Únete a las empresas que ya están liderando la revolución de la automatización inteligente</p>
+        <div class="hero-buttons">
+          <a href="" class="btn btn-primary">
+            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Solicitar Consultoría Gratuita
+          </a>
+          <a href="#servicios" class="btn btn-outline" style="color: white; border-color: white;">
+            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+            Ver Casos de Éxito
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-text">
+          &copy; 2025 Fluiwork Agencia. Todos los derechos reservados.
+        </div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Política de Privacidad</a>
+          <a href="#" class="footer-link">Términos de Servicio</a>
+          <a href="#" class="footer-link">Contacto</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="modal-body">
+      <div class="brand-info">
+        <h3>Fluiwork Agencia</h3>
+        <p>Rescatamos tu tiempo, automatizamos tu éxito</p>
+      </div>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" required>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Número de celular</label>
+          <input type="tel" id="telefono" name="telefono" required>
+        </div>
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="terminos" name="terminos" required>
+            <span class="checkmark"></span>
+            Acepto que mis datos sean utilizados para recibir información sobre servicios y promociones de Fluiwork Agencia.
+          </label>
+        </div>
+        <button type="submit" class="btn-submit">Solicitar Consultoría Gratuita</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <script src="js/index.js"></script>
+
+</body>
+</html>
