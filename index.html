@@ -1,1193 +1,638 @@
- /* Reset y configuración base */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --primary-red: #e2001a;
-      --dark-red: #b00016;
-      --accent-red: #ff1a33;
-      --black: #0a0a0a;
-      --dark-gray: #1a1a1a;
-      --white: #ffffff;
-      --light-gray: #f5f7fa;
-      --medium-gray: #e8ecf0;
-      --border-gray: #d1d9e0;
-      --text-gray: #2d3748;
-      --text-light: #64748b;
-      --gradient-primary: linear-gradient(135deg, #e2001a 0%, #ff1a33 100%);
-      --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-      --gradient-light: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-      --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.1);
-      --spacing-xs: 0.5rem;
-      --spacing-sm: 1rem;
-      --spacing-md: 2rem;
-      --spacing-lg: 3rem;
-      --spacing-xl: 4rem;
-      --spacing-2xl: 6rem;
-      --border-radius: 0.5rem;
-      --border-radius-lg: 1rem;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-      background: var(--white);
-      color: var(--text-gray);
-      line-height: 1.6;
-      font-weight: 400;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-
-    /* Tipografía profesional */
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 600;
-      letter-spacing: -0.025em;
-      color: var(--black);
-      margin-bottom: var(--spacing-sm);
-    }
-
-    h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      line-height: 1.1;
-    }
-
-    h2 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      line-height: 1.2;
-    }
-
-    h3 {
-      font-size: 1.75rem;
-      font-weight: 600;
-      line-height: 1.3;
-    }
-
-    p {
-      margin-bottom: var(--spacing-sm);
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: var(--text-light);
-    }
-
-    /* Layout */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--spacing-md);
-    }
-
-    .container-narrow {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 var(--spacing-md);
-    }
-
-    /* Header con glassmorphism - MEJORADO */
-    header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      padding: var(--spacing-sm) 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 var(--spacing-md);
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      z-index: 1100;
-    }
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--gradient-primary);
-      border-radius: var(--border-radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-md);
-    }
-
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--black);
-      letter-spacing: -0.02em;
-    }
-
-    .tagline {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      font-weight: 500;
-      margin-top: -0.25rem;
-    }
-
-    /* Navigation moderna - MEJORADO */
-    .nav-container {
-      display: flex;
-      gap: var(--spacing-md);
-      transition: var(--transition);
-    }
-
-    .nav-link {
-      color: var(--text-gray);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      padding: var(--spacing-xs) var(--spacing-sm);
-      border-radius: var(--border-radius);
-      transition: var(--transition);
-      position: relative;
-    }
-
-    .nav-link:hover {
-      color: var(--primary-red);
-      background: rgba(226, 0, 26, 0.1);
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: var(--primary-red);
-      transition: var(--transition);
-      transform: translateX(-50%);
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    .nav-link.active {
-      color: var(--primary-red);
-      background: rgba(226, 0, 26, 0.1);
-    }
-
-    .nav-link.active::after {
-      width: 100%;
-    }
-
-    /* Menú hamburguesa para móviles */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: space-around;
-      width: 30px;
-      height: 25px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      z-index: 1100;
-    }
-
-    .menu-toggle span {
-      width: 100%;
-      height: 3px;
-      background: var(--primary-red);
-      border-radius: 2px;
-      transition: var(--transition);
-      position: relative;
-    }
-
-    /* Hero Section espectacular */
-    .hero {
-      background: var(--gradient-light);
-      padding: calc(var(--spacing-2xl) + 60px) 0 var(--spacing-2xl);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%23e2001a" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-      pointer-events: none;
-    }
-
-    .hero-content {
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--spacing-xs);
-      background: rgba(226, 0, 26, 0.1);
-      color: var(--primary-red);
-      padding: var(--spacing-xs) var(--spacing-sm);
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: var(--spacing-md);
-      border: 1px solid rgba(226, 0, 26, 0.2);
-    }
-
-    .hero-title {
-      font-size: 4rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: var(--spacing-md);
-      line-height: 1.1;
-    }
-
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--text-light);
-      margin-bottom: var(--spacing-lg);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: var(--spacing-sm);
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* Botones modernos */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--spacing-xs);
-      padding: var(--spacing-sm) var(--spacing-md);
-      text-decoration: none;
-      border-radius: var(--border-radius);
-      font-weight: 600;
-      font-size: 1rem;
-      transition: var(--transition);
-      border: 2px solid transparent;
-      cursor: pointer;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--gradient-primary);
-      color: var(--white);
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--primary-red);
-      border-color: var(--primary-red);
-    }
-
-    .btn-outline:hover {
-      background: var(--primary-red);
-      color: var(--white);
-    }
-
-    /* Iconos SVG minimalistas */
-    .icon {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-
-    .icon-sm {
-      width: 20px;
-      height: 20px;
-    }
-
-    .icon-lg {
-      width: 32px;
-      height: 32px;
-    }
-
-    /* Sections con mejor spacing */
-    section {
-      padding: var(--spacing-2xl) 0;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: var(--spacing-xl);
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: var(--black);
-      margin-bottom: var(--spacing-sm);
-      position: relative;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      width: 60px;
-      height: 3px;
-      background: var(--gradient-primary);
-      transform: translateX(-50%);
-      border-radius: 2px;
-    }
-
-    .section-subtitle {
-      font-size: 1.2rem;
-      color: var(--text-light);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Cards con efectos avanzados */
-    .mission-vision {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: var(--spacing-lg);
-      margin-bottom: var(--spacing-xl);
-    }
-
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border-gray);
-      border-radius: var(--border-radius-lg);
-      padding: var(--spacing-lg);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--gradient-primary);
-      transform: scaleX(0);
-      transition: var(--transition);
-    }
-
-    .card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-xl);
-      border-color: rgba(226, 0, 26, 0.2);
-    }
-
-    .card-icon {
-      width: 50px;
-      height: 50px;
-      background: var(--gradient-primary);
-      border-radius: var(--border-radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: var(--spacing-sm);
-      box-shadow: var(--shadow-md);
-    }
-
-    .card-title {
-      color: var(--black);
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .card-description {
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    /* Services Grid mejorado */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: var(--spacing-lg);
-      margin-bottom: var(--spacing-xl);
-    }
-
-    .service-item {
-      background: var(--white);
-      border: 1px solid var(--border-gray);
-      border-radius: var(--border-radius-lg);
-      padding: var(--spacing-lg);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .service-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gradient-primary);
-      transform: scaleX(0);
-      transition: var(--transition);
-    }
-
-    .service-item:hover::before {
-      transform: scaleX(1);
-    }
-
-    .service-item:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(226, 0, 26, 0.2);
-    }
-
-    .service-header {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .service-icon {
-      width: 45px;
-      height: 45px;
-      background: var(--gradient-primary);
-      border-radius: var(--border-radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-md);
-    }
-
-    .service-title {
-      color: var(--black);
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-
-    .service-description {
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    /* Benefits table moderna */
-    .benefits-container {
-      background: var(--white);
-      border: 1px solid var(--border-gray);
-      border-radius: var(--border-radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-    }
-
-    .benefits-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .benefits-table th {
-      background: var(--gradient-primary);
-      color: var(--white);
-      font-weight: 600;
-      text-align: left;
-      padding: var(--spacing-sm) var(--spacing-md);
-      font-size: 1rem;
-    }
-
-    .benefits-table td {
-      padding: var(--spacing-sm) var(--spacing-md);
-      border-bottom: 1px solid var(--border-gray);
-      font-size: 1rem;
-    }
-
-    .benefits-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .benefits-table tr:hover {
-      background: rgba(226, 0, 26, 0.05);
-    }
-
-    .benefit-name {
-      font-weight: 600;
-      min-width: 200px;
-    }
-
-    /* Process steps con líneas conectoras */
-    .process-container {
-      position: relative;
-    }
-
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: var(--spacing-lg);
-      position: relative;
-    }
-
-    .process-step {
-      background: var(--white);
-      border: 1px solid var(--border-gray);
-      border-radius: var(--border-radius-lg);
-      padding: var(--spacing-lg);
-      position: relative;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-    }
-
-    .process-step:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(226, 0, 26, 0.3);
-    }
-
-    .step-header {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .step-number {
-      background: var(--gradient-primary);
-      color: var(--white);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: var(--shadow-md);
-    }
-
-    .step-title {
-      color: var(--black);
-      font-weight: 600;
-      font-size: 1.25rem;
-    }
-
-    .step-description {
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    /* Features list mejorada */
-    .features-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--spacing-md);
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--spacing-sm);
-      padding: var(--spacing-sm);
-      border-radius: var(--border-radius);
-      transition: var(--transition);
-    }
-
-    .feature-item:hover {
-      background: rgba(226, 0, 26, 0.05);
-    }
-
-    .feature-icon {
-      width: 12px;
-      height: 12px;
-      background: var(--gradient-primary);
-      border-radius: 50%;
-      margin-top: 6px;
-      flex-shrink: 0;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .feature-text {
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    /* CTA Section impactante */
-    .cta-section {
-      background: var(--gradient-dark);
-      color: var(--white);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>');
-      pointer-events: none;
-    }
-
-    .cta-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .cta-title {
-      color: var(--white);
-      font-size: 2.5rem;
-      font-weight: 600;
-      margin-bottom: var(--spacing-md);
-    }
-
-    .cta-subtitle {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: var(--spacing-lg);
-    }
-
-    /* Footer profesional */
-    footer {
-      background: var(--black);
-      color: var(--white);
-      padding: var(--spacing-lg) 0;
-      text-align: center;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: var(--spacing-sm);
-    }
-
-    .footer-text {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.9rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: var(--spacing-md);
-    }
-
-    .footer-link {
-      color: rgba(255, 255, 255, 0.7);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: var(--transition);
-    }
-
-    .footer-link:hover {
-      color: var(--white);
-    }
-
-    /* Animaciones */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .floating {
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: var(--transition-slow);
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 992px) {
-      .hero-title {
-        font-size: 3rem;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary SEO -->
+  <title>Fluiwork Agencia — Desarrollo Web & Automatización Inteligente | Automatización, creación de páginas web</title>
+  <meta name="description" content="Fluiwork Agencia: Desarrollo web profesional, automatización inteligente y soluciones a medida. Creamos páginas web, integraciones y sistemas que ahorran tiempo y escalan tu negocio." />
+  <meta name="keywords" content="automatización, desarrollo web, creación de páginas web, contratar desarrolladores web, Fluiwork, chatbots, integración, optimización web" />
+  <meta name="author" content="Fluiwork Agencia" />
+  <link rel="canonical" href="https://fluiwork.pages.dev" />
+
+  <!-- Social / Open Graph -->
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Fluiwork Agencia — Desarrollo Web & Automatización Inteligente" />
+  <meta property="og:description" content="Desarrollo web profesional, automatización de procesos, chatbots y soluciones a medida. Ahorra tiempo y escala tu negocio con Fluiwork." />
+  <meta property="og:url" content="https://fluiwork.pages.dev" />
+  <meta property="og:site_name" content="Fluiwork Agencia" />
+  <meta property="og:image" content="https://fluiwork.pages.devimg/og-image.jpg" />
+  <meta property="og:image:alt" content="Fluiwork Agencia - Desarrollo Web y Automatización Inteligente" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Fluiwork" />
+  <meta name="twitter:title" content="Fluiwork Agencia — Desarrollo Web & Automatización Inteligente" />
+  <meta name="twitter:description" content="Creamos páginas web y sistemas automatizados que liberan tu tiempo y aumentan productividad." />
+  <meta name="twitter:image" content="https://fluiwork.pages.devimg/og-image.jpg" />
+
+  <!-- Performance / Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+
+  <!-- Structured data (JSON-LD): WebSite, Organization, LocalBusiness, Services, Breadcrumbs and FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://fluiwork.pages.dev#organization",
+        "name": "Fluiwork Agencia",
+        "url": "https://fluiwork.pages.dev",
+        "logo": "https://fluiwork.pages.devimg/logo.png",
+        "sameAs": [
+               "https://www.linkedin.com/in/fluiwork-agencia-654764375",
+                "https://www.instagram.com/fluiwork_agencia",
+                "https://www.tiktok.com/@fluiwork.aencia"
+        ],
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+57-301-6084-113",
+          "contactType": "sales",
+          "areaServed": "CO"
+        }]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://fluiwork.pages.dev#website",
+        "url": "https://fluiwork.pages.dev",
+        "name": "Fluiwork Agencia",
+        "publisher": { "@id": "https://fluiwork.pages.dev#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://fluiwork.pages.dev?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://fluiwork.pages.dev#localbusiness",
+        "name": "Fluiwork Agencia",
+        "image": "https://fluiwork.pages.devimg/office.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Dirección ejemplo 123",
+          "addressLocality": "Ciudad",
+          "addressRegion": "Departamento",
+          "postalCode": "000000",
+          "addressCountry": "CO"
+        },
+        "telephone": "+57-301-6084-113",
+        "url": "https://fluiwork.pages.dev",
+        "priceRange": "350.000 - $5.000.000",
+        "description": "Agencia especializada en desarrollo web y automatización inteligente."
+      },
+      {
+        "@type": "ItemList",
+        "itemListOrder": "http://schema.org/ItemListOrderAscending",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@id": "https://fluiwork.pages.dev#service-devweb",
+              "name": "Desarrollo Web Profesional"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@id": "https://fluiwork.pages.dev#service-automatizacion",
+              "name": "Integración Web con Automatización"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://fluiwork.pages.dev#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Cuánto tarda un proyecto web con Fluiwork?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depende del alcance: un sitio básico puede tardar 1-2 semanas, proyectos con integraciones y automatizaciones 4-12 semanas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Ofrecen soporte después del lanzamiento?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí, ofrecemos planes de soporte 24/7, mantenimiento y evolución de sistemas."
+            }
+          }
+        ]
       }
+    ]
+  }
+  </script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo" itemscope itemtype="https://schema.org/Organization">
+        <img src="img/photo_2025-07-17_15-55-06.jpg" alt="Logo Fluiwork Agencia - Desarrollo Web y Automatización" width="120" height="36" loading="lazy" />
+        <div>
+          <div class="logo-text" itemprop="name">Fluiwork</div>
+          <div class="tagline" style="font-size: 10px;">Desarrollo Web & Automatización Inteligente</div>
+        </div>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-controls="navContainer" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-container" id="navContainer" role="navigation" aria-label="Menú principal">
+        <a href="#inicio" class="nav-link active">Inicio — Desarrollo web y automatización</a>
+        <a href="#servicios" class="nav-link">Servicios — Desarrollo web</a>
+        <a href="#beneficios" class="nav-link">Beneficios — Automatización</a>
+        <a href="#proceso" class="nav-link">Proceso — Metodología</a>
+        <a href="#nosotros" class="nav-link">Nosotros — Equipo Fluiwork</a>
+        <a href="#contacto" class="nav-link">Contacto — Solicitar consultoría</a>
+      </nav>
+
+      <div class="menu-overlay" id="menuOverlay"></div>
+    </div>
+  </header>
+
+  <section id="inicio" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/>
+          </svg>
+          Soluciones Web & Automatización
+        </div>
+        
+        <h1 class="hero-title">Desarrollo Web Profesional y Automatización Inteligente</h1>
+        
+       <p class="hero-subtitle">
+          Creamos páginas web profesionales y transformamos procesos repetitivos en sistemas inteligentes que impulsan tu negocio.
+        </p>
+        
+        <div class="hero-buttons">
+          <a href="#contacto" class="btn btn-primary">
+            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            Comenzar ahora
+          </a>
+          <a href="#servicios" class="btn btn-outline">
+            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            Ver servicios
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="introduccion">
+    <div class="container-narrow">
+      <div class="mission-vision">
+        <div class="card">
+          <div class="card-icon">
+            <svg class="icon" fill="white" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Misión</h3>
+          <p class="card-description">Desarrollar soluciones web profesionales y sistemas de automatización inteligente que potencien la productividad y competitividad de nuestros clientes.</p>
+        </div>
+        
+        <!-- Visión actualizada -->
+        <div class="card">
+          <div class="card-icon">
+            <svg class="icon" fill="white" viewBox="0 0 24 24">
+              <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Visión</h3>
+          <p class="card-description">Ser el referente en desarrollo web y automatización inteligente, transformando empresas en líderes digitales con soluciones tecnológicas innovadoras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Desarrollo Web & Automatización</h2>
+        <p class="section-subtitle">Soluciones tecnológicas avanzadas para tu presencia digital y eficiencia operativa</p>
+      </div>
       
-      h1 {
-        font-size: 2.8rem;
-      }
-      
-      h2 {
-        font-size: 2.2rem;
-      }
-      
-      .section-title {
-        font-size: 2.2rem;
-      }
-    }
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Desarrollo Web Profesional</h3>
+          </div>
+          <p class="service-description">Sitios web personalizados con HTML, CSS, JavaScript, PHP y MySQL. Diseños responsivos, optimizados para SEO y de alto rendimiento que reflejan tu identidad de marca.</p>
+        </div>
+        
+        <!-- Servicio existente actualizado -->
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Integración Web con Automatización</h3>
+          </div>
+          <p class="service-description">Sitios web optimizados con integración de automatizaciones avanzadas: chatbots inteligentes, formularios adaptativos y flujos de trabajo automatizados.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Gestión Inteligente de Citas</h3>
+          </div>
+          <p class="service-description">Sistema automatizado para agendar, reprogramar y cancelar citas con sincronización en tiempo real. Notificaciones multicanal por email, SMS y WhatsApp con recordatorios personalizados y confirmaciones automáticas.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Llamadas Automatizadas</h3>
+          </div>
+          <p class="service-description">Sistemas IVR avanzados y marcación automática inteligente para encuestas, recordatorios de pago y seguimiento postventa. Incluye reconocimiento de voz, transcripción automática y análisis de sentimientos.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Gestión de Facturas y Cobros</h3>
+          </div>
+          <p class="service-description">Automatización completa del ciclo de facturación: emisión, envío y seguimiento de facturas electrónicas. Integración con múltiples pasarelas de pago y sistema inteligente de recordatorios de vencimiento.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Asistente Virtual Empresarial</h3>
+          </div>
+          <p class="service-description">Gestión automatizada de tareas organizacionales: calendarios inteligentes, recordatorios contextuales, coordinación de reuniones. Búsqueda de información, generación de reportes y comunicaciones empresariales.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-header">
+            <div class="service-icon">
+              <svg class="icon" fill="white" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Desarrollo Web Optimizado</h3>
+          </div>
+          <p class="service-description">Adaptación y optimización de sitios web para integrar automatizaciones avanzadas: chatbots inteligentes, formularios adaptativos, flujos de trabajo automatizados. Desarrollo de aplicaciones web personalizadas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    @media (max-width: 768px) {
-      .container {
-        padding: 0 var(--spacing-sm);
-      }
-
-      .nav-container {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
-        background: var(--white);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        transition: right 0.4s ease-in-out;
-        z-index: 1000;
-        gap: var(--spacing-md);
-        padding: var(--spacing-xl);
-      }
+  <section id="beneficios">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Beneficios Transformadores</h2>
+        <p class="section-subtitle">Resultados medibles que revolucionan tu operación empresarial</p>
+      </div>
       
-      .nav-container.active {
-        right: 0;
-        z-index: 11001;
-      }
-      
-      .menu-toggle {
-        display: flex;
-      }
-      
-      .menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-      }
-      
-      .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-      }
-      
-      .menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-      }
+      <div class="benefits-container">
+        <table class="benefits-table">
+          <thead>
+            <tr>
+              <th>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="white" viewBox="0 0 24 24">
+                    <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-5H19V4h-2v2H7V4H5v2H3.5C2.67 6 2 6.67 2 7.5v11C2 19.33 2.67 20 3.5 20h15c.83 0 1.5-.67 1.5-1.5v-11C20 6.67 19.33 6 18.5 6z"/>
+                  </svg>
+                  Beneficio Clave
+                </div>
+              </th>
+              <th>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  Impacto Empresarial
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zM12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                  </svg>
+                  Optimización de Tiempo
+                </div>
+              </td>
+              <td>Reducción del 70% en tareas manuales repetitivas, liberando tiempo para actividades estratégicas de alto valor añadido.</td>
+            </tr>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                  </svg>
+                  Reducción de Costos
+                </div>
+              </td>
+              <td>Ahorro del 60% en costos operativos mediante la minimización de errores humanos y optimización de procesos automatizados.</td>
+            </tr>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                  Experiencia de Usuario Superior
+                </div>
+              </td>
+              <td>Atención 24/7 con respuestas instantáneas, incrementando la satisfacción del cliente en un 85% y la retención en un 40%.</td>
+            </tr>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+                  </svg>
+                  Escalabilidad Inteligente
+                </div>
+              </td>
+              <td>Sistemas que crecen automáticamente con tu negocio, adaptándose a volúmenes crecientes sin incremento proporcional de recursos.</td>
+            </tr>
+            <tr>
+              <td class="benefit-name">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                  </svg>
+                  Inteligencia de Datos
+                </div>
+              </td>
+              <td>Analytics avanzado con reportes automáticos y dashboards en tiempo real para decisiones basadas en datos y KPIs precisos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-      .hero-title {
-        font-size: 2.5rem;
-      }
+  <section id="proceso">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Metodología de Implementación</h2>
+        <p class="section-subtitle">Proceso estructurado y probado para garantizar el éxito de tu transformación digital</p>
+      </div>
       
-      h1 {
-        font-size: 2.3rem;
-      }
+      <div class="process-container">
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">1</div>
+              <h3 class="step-title">Análisis y Diagnóstico</h3>
+            </div>
+            <p class="step-description">Evaluación integral de procesos actuales, identificación de oportunidades de automatización y definición de objetivos específicos con métricas de éxito.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">2</div>
+              <h3 class="step-title">Diseño de Solución</h3>
+            </div>
+            <p class="step-description">Arquitectura de sistemas personalizada, diseño de flujos de interacción, selección de tecnologías óptimas y prototipado de interfaces.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">3</div>
+              <h3 class="step-title">Desarrollo e Integración</h3>
+            </div>
+            <p class="step-description">Implementación técnica de chatbots, sistemas de llamadas, automatización de procesos y desarrollo de aplicaciones web con integración seamless.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">4</div>
+              <h3 class="step-title">Testing y Optimización</h3>
+            </div>
+            <p class="step-description">Pruebas exhaustivas en entornos controlados, simulación de escenarios reales, recopilación de feedback y optimización iterativa del rendimiento.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">5</div>
+              <h3 class="step-title">Despliegue y Capacitación</h3>
+            </div>
+            <p class="step-description">Implementación en producción con migración controlada, capacitación especializada del equipo y documentación técnica completa.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-header">
+              <div class="step-number">6</div>
+              <h3 class="step-title">Soporte y Evolución</h3>
+            </div>
+            <p class="step-description">Monitoreo continuo, mantenimiento proactivo, análisis de rendimiento y actualización de sistemas según evolución del negocio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section id="faq" class="container-narrow">
+    <h2>Preguntas frecuentes — Fluiwork</h2>
+    <div class="faq-item">
+      <h3>¿Qué tipo de automatizaciones implementan?</h3>
+      <p>Chatbots, integraciones CRM, automatización de facturación, notificaciones multicanal (email, SMS, WhatsApp) y flujos de trabajo con herramientas como n8n, Zapier o integraciones personalizadas.</p>
+    </div>
+    <div class="faq-item">
+      <h3>¿Puedo contratar solo desarrollo web o también integración con sistemas existentes?</h3>
+      <p>Ofrecemos ambos: desde sitios informativos hasta integraciones completas con ERPs, CRMs y plataformas de pago.</p>
+    </div>
+  </section>
+
+   <section id="nosotros">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">¿Por qué Fluiwork?</h2>
+        <p class="section-subtitle">Experiencia en desarrollo web y automatización que nos distingue</p>
+      </div>
       
-      h2 {
-        font-size: 1.9rem;
-      }
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Experiencia Multisectorial:</strong> Más de 50 proyectos exitosos en servicios, comercio, salud, educación, finanzas y tecnología, adaptando soluciones a cada industria.</p>
+        </div>
 
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
+          <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Experiencia en Desarrollo Web:</strong> Creamos sitios web profesionales con HTML, CSS, JavaScript, PHP y MySQL para una presencia digital impactante.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Tecnología de Vanguardia:</strong> Utilizamos inteligencia artificial, machine learning y plataformas cloud líderes para garantizar soluciones escalables y futuro-proof.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Enfoque Consultivo:</strong> Equipo multidisciplinario dedicado que comprende profundamente tu industria, desafíos y objetivos estratégicos.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Agilidad y Adaptabilidad:</strong> Metodología ágil que permite iteraciones rápidas y adaptación continua a cambios del mercado y necesidades emergentes.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>ROI Garantizado:</strong> Compromiso con resultados medibles y retorno de inversión demostrable en los primeros 90 días de implementación.</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon"></div>
+          <p class="feature-text"><strong>Soporte 24/7:</strong> Monitoreo continuo y soporte técnico especializado para garantizar operación óptima y máxima disponibilidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      .btn {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
-      }
+  <section id="contacto" class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">¿Listo para Transformar tu Negocio?</h2>
+        <p class="cta-subtitle">Únete a las empresas que ya están liderando la revolución de la automatización inteligente</p>
+        <div class="hero-buttons">
+          <a href="" class="btn btn-primary">
+            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Solicitar Consultoría Gratuita
+          </a>
+          <a href="#servicios" class="btn btn-outline" style="color: white; border-color: white;">
+            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+            Ver Casos de Éxito
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      .mission-vision {
-        grid-template-columns: 1fr;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .process-steps {
-        grid-template-columns: 1fr;
-      }
-
-      .features-list {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: var(--spacing-md);
-      }
-
-      .section-title {
-        font-size: 1.9rem;
-      }
-      
-      .section-title::after {
-        bottom: -8px;
-      }
-
-      .cta-title {
-        font-size: 2rem;
-      }
-      
-      .benefits-table {
-        display: block;
-        overflow-x: auto;
-      }
-      
-      .hero {
-        padding: calc(var(--spacing-2xl) + 80px) 0 var(--spacing-xl);
-      }
-      
-      section {
-        padding: var(--spacing-xl) 0;
-      }
-    }
+  <footer>
     
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 2.2rem;
-      }
-      
-      h1 {
-        font-size: 2rem;
-      }
-      
-      h2 {
-        font-size: 1.7rem;
-      }
-      
-      .section-title {
-        font-size: 1.7rem;
-      }
-      
-      .cta-title {
-        font-size: 1.8rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.1rem;
-      }
-      
-      .section-subtitle {
-        font-size: 1.1rem;
-      }
-      
-      .card, .service-item, .process-step {
-        padding: var(--spacing-md);
-      }
-      
-      .nav-container {
-        width: 85%;
-      }
-    }
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-text">
+          &copy; 2025 Fluiwork Agencia. Todos los derechos reservados.
+        </div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Política de Privacidad</a>
+          <a href="#" class="footer-link">Términos de Servicio</a>
+          <a href="#" class="footer-link">Contacto</a>
+        </div>
+      </div>
+      <!-- Social icons only -->
+      <div class="social-links" aria-label="Redes sociales Fluiwork" style="display:flex;gap:18px;align-items:center; margin-top: 2%; display: flex; justify-content: center;">
+        <a href="https://www.linkedin.com/in/fluiwork-agencia-654764375" target="_blank" aria-label="LinkedIn" class="social-link">
+          <!-- LinkedIn SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" class="social-icon" role="img" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.352V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.37-1.852 3.605 0 4.266 2.372 4.266 5.455v6.288zM5.337 7.433c-1.144 0-2.068-.926-2.068-2.067 0-1.143.924-2.068 2.068-2.068 1.141 0 2.067.925 2.067 2.068 0 1.141-.926 2.067-2.067 2.067zM6.856 20.452H3.815V9h3.041v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+          </svg>
+        </a>
 
-    /* Mejoras de accesibilidad */
-    a:focus {
-      outline: 2px solid var(--primary-red);
-      outline-offset: 2px;
-    }
-    
-    button:focus, .btn:focus {
-      outline: 2px solid var(--primary-red);
-      outline-offset: 2px;
-    }
-    
-    /* Overlay para menú móvil */
-    .menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 999;
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--transition);
-    }
-    
-    .menu-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
+        <a href="https://www.instagram.com/fluiwork_agencia" target="_blank" aria-label="Instagram" class="social-link">
+          <!-- Instagram SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" class="social-icon" role="img" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.347 3.608 1.322.975.975 1.26 2.242 1.322 3.608.058 1.266.07 1.646.07 4.837s-.012 3.571-.07 4.837c-.062 1.366-.347 2.633-1.322 3.608-.975.975-2.242 1.26-3.608 1.322-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.347-3.608-1.322-.975-.975-1.26-2.242-1.322-3.608C2.175 15.571 2.163 15.191 2.163 12s.012-3.571.07-4.837c.062-1.366.347-2.633 1.322-3.608.975-.975 2.242-1.26 3.608-1.322C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.741 0 8.332.014 7.052.072 5.775.13 4.638.428 3.678 1.388 2.718 2.348 2.42 3.485 2.362 4.762 2.304 6.042 2.29 6.451 2.29 12c0 5.549.014 5.958.072 7.238.058 1.277.356 2.414 1.316 3.374.96.96 2.097 1.258 3.374 1.316 1.28.058 1.689.072 7.238.072s5.958-.014 7.238-.072c1.277-.058 2.414-.356 3.374-1.316.96-.96 1.258-2.097 1.316-3.374.058-1.28.072-1.689.072-7.238s-.014-5.958-.072-7.238c-.058-1.277-.356-2.414-1.316-3.374C21.662.428 20.525.13 19.248.072 17.968.014 17.559 0 14.3 0H12z"/>
+            <path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zM18.406 4.594a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/>
+          </svg>
+        </a>
 
+        <a href="https://www.tiktok.com/@fluiwork.agencia" target="_blank" aria-label="TikTok" class="social-link">
+          <!-- TikTok SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" class="social-icon" role="img" aria-hidden="true">
+            <path d="M12.001 2.004c.164 2.177 1.232 4.16 2.934 5.475 1.01.783 2.289 1.223 3.594 1.275V12.2c-1.476-.048-2.94-.465-4.186-1.218v5.604c0 2.942-2.376 5.335-5.31 5.414-2.993.08-5.493-2.373-5.493-5.364 0-2.808 2.145-5.115 4.877-5.368v3.07c-.596.162-1.03.691-1.03 1.32 0 .752.613 1.363 1.365 1.363.739 0 1.332-.591 1.365-1.326l.004-11.77h2.88z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
 
-    /*MODAL STYLE*/
-    .modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-}
+  <!-- Modal -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="modal-body">
+      <div class="brand-info">
+        <h3>Fluiwork Agencia</h3>
+        <p>Rescatamos tu tiempo, automatizamos tu éxito</p>
+      </div>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" required>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Número de celular</label>
+          <input type="tel" id="telefono" name="telefono" required>
+        </div>
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="terminos" name="terminos" required>
+            <span class="checkmark"></span>
+            Acepto que mis datos sean utilizados para recibir información sobre servicios y promociones de Fluiwork Agencia.
+          </label>
+        </div>
+        <button type="submit" class="btn-submit">Solicitar Consultoría Gratuita</button>
+      </form>
+    </div>
+  </div>
+</div>
 
-.modal-content {
-  background-color: #ffffff;
-  margin: 0;
-  padding: 0;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 480px;
-  max-height: 85vh;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  overflow: hidden;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+  <script src="js/index.js"></script>
 
-
-
-.modal-body {
-  padding: 40px 32px;
-  overflow: hidden;
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  color: #999999;
-  font-size: 28px;
-  font-weight: 300;
-  cursor: pointer;
-  line-height: 1;
-  transition: color 0.2s ease;
-  z-index: 10;
-}
-
-.close:hover {
-  color: #333333;
-}
-
-.brand-info {
-  text-align: center;
-  margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #f0f0f0;
-  padding-top: 8px;
-}
-
-.brand-info h3 {
-  margin: 0 0 8px 0;
-  font-size: 24px;
-  font-weight: 700;
-  color: #000000;
-  letter-spacing: -0.3px;
-}
-
-.brand-info p {
-  margin: 0;
-  font-size: 15px;
-  color: #666666;
-  font-weight: 400;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #333333;
-  letter-spacing: -0.1px;
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"] {
-  width: 100%;
-  padding: 12px 16px;
-  border: 2px solid #e0e0e0;
-  border-radius: 6px;
-  font-size: 16px;
-  font-family: inherit;
-  background-color: #ffffff;
-  transition: border-color 0.2s ease;
-  box-sizing: border-box;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: #ff0000;
-}
-
-.checkbox-group {
-  margin-bottom: 24px;
-}
-
-.checkbox-label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-size: 14px;
-  color: #666666;
-  line-height: 1.4;
-}
-
-.checkbox-label input[type="checkbox"] {
-  display: none;
-}
-
-.checkmark {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #e0e0e0;
-  border-radius: 4px;
-  margin-right: 12px;
-  position: relative;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-  padding-left: 4%;
-}
-
-.checkbox-label input[type="checkbox"]:checked + .checkmark {
-  background-color: #ff0000;
-  border-color: #ff0000;
-}
-
-.checkbox-label input[type="checkbox"]:checked + .checkmark:after {
-  content: "";
-  position: absolute;
-  left: 6px;
-  top: 2px;
-  width: 6px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-.btn-submit {
-  width: 100%;
-  padding: 16px;
-  background-color: #ff0000;
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  font-family: inherit;
-  letter-spacing: -0.2px;
-}
-
-.btn-submit:hover {
-  background-color: #e60000;
-}
-
-.btn-submit:active {
-  transform: translateY(1px);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .modal-content {
-    width: 95%;
-    max-width: 90vw;
-    max-height: 90vh;
-    border-radius: 16px;
-  }
-  
-  .modal-body {
-    padding: 32px 24px;
-  }
-  
-  .close {
-    top: 16px;
-    right: 20px;
-    font-size: 24px;
-  }
-  
-  .brand-info {
-    margin-bottom: 28px;
-    padding-bottom: 20px;
-  }
-  
-  .brand-info h3 {
-    font-size: 22px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group input[type="tel"] {
-    padding: 14px;
-    font-size: 16px;
-  }
-  
-  .btn-submit {
-    padding: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .modal-content {
-    width: 96%;
-    max-height: 92vh;
-  }
-  
-  .modal-body {
-    padding: 28px 20px;
-  }
-  
-  .brand-info h3 {
-    font-size: 20px;
-  }
-  
-  .brand-info p {
-    font-size: 14px;
-  }
-}
+</body>
+</html>
