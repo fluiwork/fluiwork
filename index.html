@@ -726,6 +726,47 @@
       window.__FluiworkModal = { open: openModal, close: closeModal };
     })();
   </script>
+<script>
+(function() {
+  if (!('visualViewport' in window)) return;
+
+  let activeInput = null;
+  let lastViewportHeight = window.visualViewport.height;
+
+  // seleccionar inputs en modal
+  const inputs = document.querySelectorAll('.modal input, .modal textarea, .modal select');
+
+  inputs.forEach(inp => {
+    inp.addEventListener('focus', () => {
+      activeInput = inp;
+      // pequeño delay para que el teclado empiece a mostrarse y luego hacer scroll
+      setTimeout(() => {
+        try {
+          inp.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        } catch(e){}
+      }, 60);
+    });
+    inp.addEventListener('blur', () => { activeInput = null; });
+  });
+
+  // cuando cambia visualViewport (teclado abierto/cerrado)
+  window.visualViewport.addEventListener('resize', () => {
+    const vh = window.visualViewport.height;
+    // si la altura disminuye mucho -> teclado abierto
+    if (activeInput && vh < lastViewportHeight - 50) {
+      // asegurar que el input esté visible y forzar la selección para mostrar caret
+      setTimeout(() => {
+        try {
+          activeInput.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          const len = activeInput.value ? activeInput.value.length : 0;
+          activeInput.setSelectionRange(len, len);
+        } catch (e) {}
+      }, 80);
+    }
+    lastViewportHeight = vh;
+  }, { passive: true });
+})();
+</script>
 
 </body>
 </html>
