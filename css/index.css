@@ -36,6 +36,74 @@
   --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ------------------------
+   FIX CARET iOS / Android
+   ------------------------ */
+
+/* Ajustes generales para inputs/textarea/select */
+html, body, input, textarea, select, button {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: auto;
+}
+
+/* Forzar color de caret (visible) */
+input, textarea, select {
+  caret-color: var(--primary-red);
+  -webkit-appearance: none;
+  appearance: none;
+  /* Crear layer compositing dedicado para evitar que el caret desaparezca
+     cuando el ancestro tiene backdrop-filter / transform / fixed positioning. */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* Evitar que el navegador aplique transform en ancestros en lo posible */
+  will-change: auto;
+}
+
+/* Modal: asegurar que no haya transform/perspective que rompa el caret */
+.modal, .modal-content {
+  -webkit-transform: none !important;
+  transform: none !important;
+  -webkit-perspective: none !important;
+  perspective: none !important;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  /* Mantener scroll interno nativo y "smooth" en iOS */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Inputs dentro del modal: capa propia + backface visibility */
+.modal input, .modal textarea, .modal select, .form-group input {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* seguridad adicional por compatibilidad */
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+/* Si usas backdrop-filter en header u otros, no lo inherits en ancestros directos de inputs */
+header, .nav-container, .modal {
+  /* no forzar la eliminación del blur si prefieres el efecto, pero
+     si sigues teniendo problemas mueve los inputs fuera del stacking context
+     del elemento con backdrop-filter. */
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* Si no quieres quitar el blur visual, aplica blur en un pseudo-elemento absoluto
+   en lugar de al contenedor que contiene los inputs (recomendado para compatibilidad). */
+
+/* Focus estilos (accesibilidad) */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 3px rgba(226,0,26,0.08);
+}
+
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
