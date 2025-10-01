@@ -1333,3 +1333,4 @@ footer { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helv
 @media (max-width:600px) {
   .footer-content { flex-direction: column; gap:12px; text-align:center; }
 }
+
